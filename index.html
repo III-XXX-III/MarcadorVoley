@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width,
+                 initial-scale=1.0,
+                 maximum-scale=1.0,
+                 user-scalable=no,
+                 viewport-fit=cover"
+    >
+
+    <meta name="theme-color" content="#0a0a0a">
+
+    <!-- Configuración para iPhone -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Voley">
+
+    <title>Marcador Voley</title>
+
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Icono iPhone -->
+    <link rel="apple-touch-icon" href="icon-192.png">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="marcador">
+
+        <section class="equipo">
+         <h2 class="nombre-equipo" id="nombreA" onclick="cambiarNombre('A')">
+    EQUIPO A <span class="icono-editar">✎</span>
+</h2>
+
+            <div class="puntos" id="puntosA">0</div>
+
+            <div class="botones">
+                <button
+                    class="sumar"
+                    onclick="sumar('A')"
+                    aria-label="Sumar punto al equipo A"
+                >
+                    +
+                </button>
+
+                <button
+                    class="restar"
+                    onclick="restar('A')"
+                    aria-label="Restar punto al equipo A"
+                >
+                    −
+                </button>
+            </div>
+        </section>
+
+
+        <div class="separador"></div>
+
+
+        <section class="equipo">
+        <h2 class="nombre-equipo" id="nombreB" onclick="cambiarNombre('B')">
+    EQUIPO B
+</h2>
+
+            <div class="puntos" id="puntosB">0</div>
+
+            <div class="botones">
+                <button
+                    class="sumar"
+                    onclick="sumar('B')"
+                    aria-label="Sumar punto al equipo B"
+                >
+                    +
+                </button>
+
+                <button
+                    class="restar"
+                    onclick="restar('B')"
+                    aria-label="Restar punto al equipo B"
+                >
+                    −
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+
+    <button
+        class="reiniciar"
+        onclick="reiniciar()"
+    >
+        REINICIAR
+    </button>
+
+
+    <script src="app.js"></script>
+
+</body>
+</html>
