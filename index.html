@@ -14,7 +14,6 @@
     >
 
     <meta name="theme-color" content="#080808">
-
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta
@@ -40,7 +39,7 @@
 
         <!-- EQUIPO A -->
 
-        <section class="equipo" id="equipoA">
+        <section class="equipo">
 
             <button
                 class="nombre-equipo"
@@ -50,14 +49,16 @@
                 EQUIPO A
             </button>
 
-
             <button
-                class="selector-color"
-                id="colorA"
+                class="boton-color"
                 onclick="cambiarColor('A')"
-                aria-label="Cambiar color del equipo A"
-            ></button>
-
+            >
+                COLOR
+                <span
+                    class="muestra-color"
+                    id="colorA"
+                ></span>
+            </button>
 
             <div
                 class="puntos"
@@ -66,13 +67,11 @@
                 0
             </div>
 
-
             <div class="botones-puntos">
 
                 <button
                     class="boton-punto sumar"
                     onclick="sumar('A')"
-                    aria-label="Sumar punto al equipo A"
                 >
                     +
                 </button>
@@ -80,41 +79,8 @@
                 <button
                     class="boton-punto restar"
                     onclick="restar('A')"
-                    aria-label="Restar punto al equipo A"
                 >
                     −
-                </button>
-
-            </div>
-
-
-            <div class="zona-sets">
-
-                <span class="texto-set">
-                    SETS
-                </span>
-
-                <button
-                    class="boton-set"
-                    onclick="restarSet('A')"
-                    aria-label="Restar set al equipo A"
-                >
-                    −
-                </button>
-
-                <span
-                    class="numero-set"
-                    id="setsA"
-                >
-                    0
-                </span>
-
-                <button
-                    class="boton-set"
-                    onclick="sumarSet('A')"
-                    aria-label="Sumar set al equipo A"
-                >
-                    +
                 </button>
 
             </div>
@@ -122,12 +88,86 @@
         </section>
 
 
-        <div class="separador"></div>
+        <!-- CENTRO -->
+
+        <section class="centro">
+
+            <div class="linea-centro"></div>
+
+            <div class="marcador-sets">
+
+                <div class="titulo-sets">
+                    SETS
+                </div>
+
+                <div class="sets">
+
+                    <div class="set-equipo">
+
+                        <button
+                            class="boton-set"
+                            onclick="restarSet('A')"
+                        >
+                            −
+                        </button>
+
+                        <span
+                            class="numero-set"
+                            id="setsA"
+                        >
+                            0
+                        </span>
+
+                        <button
+                            class="boton-set"
+                            onclick="sumarSet('A')"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+
+                    <span class="guion-set">
+                        –
+                    </span>
+
+
+                    <div class="set-equipo">
+
+                        <button
+                            class="boton-set"
+                            onclick="restarSet('B')"
+                        >
+                            −
+                        </button>
+
+                        <span
+                            class="numero-set"
+                            id="setsB"
+                        >
+                            0
+                        </span>
+
+                        <button
+                            class="boton-set"
+                            onclick="sumarSet('B')"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
 
 
         <!-- EQUIPO B -->
 
-        <section class="equipo" id="equipoB">
+        <section class="equipo">
 
             <button
                 class="nombre-equipo"
@@ -137,14 +177,16 @@
                 EQUIPO B
             </button>
 
-
             <button
-                class="selector-color"
-                id="colorB"
+                class="boton-color"
                 onclick="cambiarColor('B')"
-                aria-label="Cambiar color del equipo B"
-            ></button>
-
+            >
+                COLOR
+                <span
+                    class="muestra-color"
+                    id="colorB"
+                ></span>
+            </button>
 
             <div
                 class="puntos"
@@ -153,13 +195,11 @@
                 0
             </div>
 
-
             <div class="botones-puntos">
 
                 <button
                     class="boton-punto sumar"
                     onclick="sumar('B')"
-                    aria-label="Sumar punto al equipo B"
                 >
                     +
                 </button>
@@ -167,41 +207,8 @@
                 <button
                     class="boton-punto restar"
                     onclick="restar('B')"
-                    aria-label="Restar punto al equipo B"
                 >
                     −
-                </button>
-
-            </div>
-
-
-            <div class="zona-sets">
-
-                <span class="texto-set">
-                    SETS
-                </span>
-
-                <button
-                    class="boton-set"
-                    onclick="restarSet('B')"
-                    aria-label="Restar set al equipo B"
-                >
-                    −
-                </button>
-
-                <span
-                    class="numero-set"
-                    id="setsB"
-                >
-                    0
-                </span>
-
-                <button
-                    class="boton-set"
-                    onclick="sumarSet('B')"
-                    aria-label="Sumar set al equipo B"
-                >
-                    +
                 </button>
 
             </div>
@@ -211,7 +218,7 @@
     </main>
 
 
-    <!-- CONTROLES INFERIORES -->
+    <!-- CONTROLES -->
 
     <footer class="controles">
 
@@ -223,7 +230,7 @@
         </button>
 
         <button
-            class="boton-control nuevo-partido"
+            class="boton-control"
             onclick="nuevoPartido()"
         >
             NUEVO PARTIDO
@@ -232,7 +239,7 @@
     </footer>
 
 
-    <!-- SELECTOR DE COLOR -->
+    <!-- PALETA DE COLORES -->
 
     <div
         class="modal-color oculto"
