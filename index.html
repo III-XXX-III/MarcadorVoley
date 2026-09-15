@@ -1,50 +1,76 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
 
     <meta
         name="viewport"
         content="width=device-width,
-                 initial-scale=1.0,
-                 maximum-scale=1.0,
-                 user-scalable=no,
-                 viewport-fit=cover"
+        initial-scale=1.0,
+        maximum-scale=1.0,
+        user-scalable=no,
+        viewport-fit=cover"
     >
 
-    <meta name="theme-color" content="#0a0a0a">
+    <meta name="theme-color" content="#080808">
 
-    <!-- Configuración para iPhone -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Voley">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta
+        name="apple-mobile-web-app-status-bar-style"
+        content="black-translucent"
+    >
+    <meta
+        name="apple-mobile-web-app-title"
+        content="Voley"
+    >
 
     <title>Marcador Voley</title>
 
-    <!-- PWA -->
     <link rel="manifest" href="manifest.json">
-
-    <!-- Icono iPhone -->
     <link rel="apple-touch-icon" href="icon-192.png">
-
     <link rel="stylesheet" href="style.css">
 </head>
+
 
 <body>
 
     <main class="marcador">
 
-        <section class="equipo">
-         <h2 class="nombre-equipo" id="nombreA" onclick="cambiarNombre('A')">
-    EQUIPO A <span class="icono-editar">✎</span>
-</h2>
+        <!-- EQUIPO A -->
 
-            <div class="puntos" id="puntosA">0</div>
+        <section class="equipo" id="equipoA">
 
-            <div class="botones">
+            <button
+                class="nombre-equipo"
+                id="nombreA"
+                onclick="cambiarNombre('A')"
+            >
+                EQUIPO A
+            </button>
+
+
+            <button
+                class="selector-color"
+                id="colorA"
+                onclick="cambiarColor('A')"
+                aria-label="Cambiar color del equipo A"
+            ></button>
+
+
+            <div
+                class="puntos"
+                id="puntosA"
+            >
+                0
+            </div>
+
+
+            <div class="botones-puntos">
+
                 <button
-                    class="sumar"
+                    class="boton-punto sumar"
                     onclick="sumar('A')"
                     aria-label="Sumar punto al equipo A"
                 >
@@ -52,29 +78,86 @@
                 </button>
 
                 <button
-                    class="restar"
+                    class="boton-punto restar"
                     onclick="restar('A')"
                     aria-label="Restar punto al equipo A"
                 >
                     −
                 </button>
+
             </div>
+
+
+            <div class="zona-sets">
+
+                <span class="texto-set">
+                    SETS
+                </span>
+
+                <button
+                    class="boton-set"
+                    onclick="restarSet('A')"
+                    aria-label="Restar set al equipo A"
+                >
+                    −
+                </button>
+
+                <span
+                    class="numero-set"
+                    id="setsA"
+                >
+                    0
+                </span>
+
+                <button
+                    class="boton-set"
+                    onclick="sumarSet('A')"
+                    aria-label="Sumar set al equipo A"
+                >
+                    +
+                </button>
+
+            </div>
+
         </section>
 
 
         <div class="separador"></div>
 
 
-        <section class="equipo">
-        <h2 class="nombre-equipo" id="nombreB" onclick="cambiarNombre('B')">
-    EQUIPO B
-</h2>
+        <!-- EQUIPO B -->
 
-            <div class="puntos" id="puntosB">0</div>
+        <section class="equipo" id="equipoB">
 
-            <div class="botones">
+            <button
+                class="nombre-equipo"
+                id="nombreB"
+                onclick="cambiarNombre('B')"
+            >
+                EQUIPO B
+            </button>
+
+
+            <button
+                class="selector-color"
+                id="colorB"
+                onclick="cambiarColor('B')"
+                aria-label="Cambiar color del equipo B"
+            ></button>
+
+
+            <div
+                class="puntos"
+                id="puntosB"
+            >
+                0
+            </div>
+
+
+            <div class="botones-puntos">
+
                 <button
-                    class="sumar"
+                    class="boton-punto sumar"
                     onclick="sumar('B')"
                     aria-label="Sumar punto al equipo B"
                 >
@@ -82,27 +165,105 @@
                 </button>
 
                 <button
-                    class="restar"
+                    class="boton-punto restar"
                     onclick="restar('B')"
                     aria-label="Restar punto al equipo B"
                 >
                     −
                 </button>
+
             </div>
+
+
+            <div class="zona-sets">
+
+                <span class="texto-set">
+                    SETS
+                </span>
+
+                <button
+                    class="boton-set"
+                    onclick="restarSet('B')"
+                    aria-label="Restar set al equipo B"
+                >
+                    −
+                </button>
+
+                <span
+                    class="numero-set"
+                    id="setsB"
+                >
+                    0
+                </span>
+
+                <button
+                    class="boton-set"
+                    onclick="sumarSet('B')"
+                    aria-label="Sumar set al equipo B"
+                >
+                    +
+                </button>
+
+            </div>
+
         </section>
 
     </main>
 
 
-    <button
-        class="reiniciar"
-        onclick="reiniciar()"
+    <!-- CONTROLES INFERIORES -->
+
+    <footer class="controles">
+
+        <button
+            class="boton-control"
+            onclick="reiniciarPuntos()"
+        >
+            REINICIAR PUNTOS
+        </button>
+
+        <button
+            class="boton-control nuevo-partido"
+            onclick="nuevoPartido()"
+        >
+            NUEVO PARTIDO
+        </button>
+
+    </footer>
+
+
+    <!-- SELECTOR DE COLOR -->
+
+    <div
+        class="modal-color oculto"
+        id="modalColor"
     >
-        REINICIAR
-    </button>
+
+        <div class="panel-color">
+
+            <div class="titulo-color">
+                COLOR DEL EQUIPO
+            </div>
+
+            <div
+                class="paleta"
+                id="paleta"
+            ></div>
+
+            <button
+                class="cerrar-color"
+                onclick="cerrarColores()"
+            >
+                CERRAR
+            </button>
+
+        </div>
+
+    </div>
 
 
     <script src="app.js"></script>
 
 </body>
+
 </html>
