@@ -591,70 +591,192 @@ button {
    HORIZONTAL EN IPHONE
    ============================== */
 
-@media
-(orientation: landscape)
-and (max-height: 500px) {
+/* ==============================
+   IPHONE HORIZONTAL
+   ============================== */
+
+@media (orientation: landscape) and (max-height: 500px) {
 
     .marcador {
-        height:
-            calc(100dvh - 58px);
+        height: calc(100dvh - 50px);
+
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+
+        align-items: center;
+    }
+
+    .equipo {
+        height: 100%;
+
+        justify-content: center;
+
+        padding-top: 2px;
+        padding-bottom: 2px;
     }
 
     .centro {
-        width: 150px;
+        width: 125px;
+        height: 100%;
+
+        flex-shrink: 0;
     }
+
+    .linea-centro {
+        height: 88%;
+    }
+
+
+    /* NOMBRE */
 
     .nombre-equipo {
-        min-width: 180px;
-        min-height: 34px;
+        min-width: 150px;
+        min-height: 30px;
 
-        padding: 2px 10px;
+        padding: 2px 8px;
 
-        font-size: 17px;
+        font-size: 15px;
+
+        letter-spacing: 1px;
     }
+
+    .nombre-equipo::after {
+        margin-left: 5px;
+
+        font-size: 12px;
+    }
+
+
+    /* COLOR */
 
     .boton-color {
-        height: 30px;
+        min-width: 82px;
+        height: 25px;
 
-        margin-bottom: 4px;
+        margin: 1px 0 3px;
+
+        padding: 0 9px;
+
+        border-radius: 9px;
+
+        gap: 6px;
+
+        font-size: 8px;
     }
 
+    .muestra-color {
+        width: 12px;
+        height: 12px;
+    }
+
+
+    /* PUNTOS */
+
     .puntos {
-        margin-bottom: 7px;
+        margin: 0 0 5px;
 
         font-size: clamp(
-            100px,
-            18vw,
-            165px
+            82px,
+            15vw,
+            135px
         );
+
+        line-height: 0.85;
+    }
+
+
+    /* BOTONES + Y - */
+
+    .botones-puntos {
+        gap: 10px;
     }
 
     .boton-punto {
-        width: 86px;
-        height: 45px;
+        width: 76px;
+        height: 39px;
 
-        font-size: 31px;
+        border-radius: 11px;
+
+        font-size: 28px;
     }
+
+
+    /* SETS */
 
     .marcador-sets {
-        padding: 10px 8px;
+        padding: 8px 7px;
+
+        border-radius: 14px;
     }
 
-    .controles {
-        min-height: 58px;
+    .titulo-sets {
+        margin-bottom: 6px;
 
-        padding-top: 5px;
+        font-size: 9px;
+    }
+
+    .sets {
+        gap: 5px;
+    }
+
+    .set-equipo {
+        gap: 3px;
+    }
+
+    .numero-set {
+        min-width: 25px;
+
+        font-size: 21px;
+    }
+
+    .boton-set {
+        width: 30px;
+        height: 24px;
+
+        border-radius: 7px;
+
+        font-size: 16px;
+    }
+
+    .guion-set {
+        font-size: 17px;
+    }
+
+
+    /* CONTROLES INFERIORES */
+
+    .controles {
+        min-height: 50px;
+
+        padding-top: 4px;
+
+        padding-left:
+            calc(
+                10px +
+                env(safe-area-inset-left)
+            );
+
+        padding-right:
+            calc(
+                10px +
+                env(safe-area-inset-right)
+            );
 
         padding-bottom:
             calc(
-                5px +
+                4px +
                 env(safe-area-inset-bottom)
             );
     }
 
     .boton-control {
-        height: 36px;
+        min-width: 125px;
+        height: 32px;
 
-        font-size: 9px;
+        padding: 0 12px;
+
+        border-radius: 10px;
+
+        font-size: 8px;
     }
 }
