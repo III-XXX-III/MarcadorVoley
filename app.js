@@ -1,7 +1,3 @@
-/* ========================================
-   ESTADO
-   ======================================== */
-
 let puntosA =
     Number(localStorage.getItem("puntosA")) || 0;
 
@@ -14,31 +10,20 @@ let setsA =
 let setsB =
     Number(localStorage.getItem("setsB")) || 0;
 
-
 let nombreA =
-    localStorage.getItem("nombreA") ||
-    "EQUIPO A";
+    localStorage.getItem("nombreA") || "EQUIPO A";
 
 let nombreB =
-    localStorage.getItem("nombreB") ||
-    "EQUIPO B";
-
+    localStorage.getItem("nombreB") || "EQUIPO B";
 
 let colorA =
-    localStorage.getItem("colorA") ||
-    "#ffffff";
+    localStorage.getItem("colorA") || "#ffffff";
 
 let colorB =
-    localStorage.getItem("colorB") ||
-    "#ffffff";
-
+    localStorage.getItem("colorB") || "#ffffff";
 
 let equipoColorActivo = null;
 
-
-/* ========================================
-   PALETA
-   ======================================== */
 
 const COLORES = [
     "#ffffff",
@@ -56,11 +41,20 @@ const COLORES = [
 ];
 
 
-/* ========================================
-   ACTUALIZAR INTERFAZ
-   ======================================== */
-
 function actualizar() {
+
+    puntosA =
+        Math.max(0, puntosA);
+
+    puntosB =
+        Math.max(0, puntosB);
+
+    setsA =
+        Math.max(0, setsA);
+
+    setsB =
+        Math.max(0, setsB);
+
 
     document.getElementById("puntosA").textContent =
         puntosA;
@@ -68,13 +62,11 @@ function actualizar() {
     document.getElementById("puntosB").textContent =
         puntosB;
 
-
     document.getElementById("setsA").textContent =
         setsA;
 
     document.getElementById("setsB").textContent =
         setsB;
-
 
     document.getElementById("nombreA").textContent =
         nombreA;
@@ -86,62 +78,27 @@ function actualizar() {
     aplicarColor("A");
     aplicarColor("B");
 
-
     guardar();
 }
 
 
-/* ========================================
-   GUARDAR
-   ======================================== */
-
 function guardar() {
 
-    localStorage.setItem(
-        "puntosA",
-        puntosA
-    );
+    localStorage.setItem("puntosA", puntosA);
+    localStorage.setItem("puntosB", puntosB);
 
-    localStorage.setItem(
-        "puntosB",
-        puntosB
-    );
+    localStorage.setItem("setsA", setsA);
+    localStorage.setItem("setsB", setsB);
 
-    localStorage.setItem(
-        "setsA",
-        setsA
-    );
+    localStorage.setItem("nombreA", nombreA);
+    localStorage.setItem("nombreB", nombreB);
 
-    localStorage.setItem(
-        "setsB",
-        setsB
-    );
-
-    localStorage.setItem(
-        "nombreA",
-        nombreA
-    );
-
-    localStorage.setItem(
-        "nombreB",
-        nombreB
-    );
-
-    localStorage.setItem(
-        "colorA",
-        colorA
-    );
-
-    localStorage.setItem(
-        "colorB",
-        colorB
-    );
+    localStorage.setItem("colorA", colorA);
+    localStorage.setItem("colorB", colorB);
 }
 
 
-/* ========================================
-   PUNTOS
-   ======================================== */
+/* PUNTOS */
 
 function sumar(equipo) {
 
@@ -158,25 +115,16 @@ function sumar(equipo) {
 function restar(equipo) {
 
     if (equipo === "A") {
-
-        if (puntosA > 0) {
-            puntosA--;
-        }
-
+        puntosA--;
     } else {
-
-        if (puntosB > 0) {
-            puntosB--;
-        }
+        puntosB--;
     }
 
     actualizar();
 }
 
 
-/* ========================================
-   SETS
-   ======================================== */
+/* SETS */
 
 function sumarSet(equipo) {
 
@@ -193,25 +141,16 @@ function sumarSet(equipo) {
 function restarSet(equipo) {
 
     if (equipo === "A") {
-
-        if (setsA > 0) {
-            setsA--;
-        }
-
+        setsA--;
     } else {
-
-        if (setsB > 0) {
-            setsB--;
-        }
+        setsB--;
     }
 
     actualizar();
 }
 
 
-/* ========================================
-   NOMBRE DEL EQUIPO
-   ======================================== */
+/* NOMBRES */
 
 function cambiarNombre(equipo) {
 
@@ -220,26 +159,22 @@ function cambiarNombre(equipo) {
             ? nombreA
             : nombreB;
 
-
-    const nuevo = prompt(
-        "Nombre del equipo:",
-        actual
-    );
-
+    const nuevo =
+        prompt(
+            "Nombre del equipo:",
+            actual
+        );
 
     if (nuevo === null) {
         return;
     }
 
-
     const limpio =
         nuevo.trim();
-
 
     if (!limpio) {
         return;
     }
-
 
     if (equipo === "A") {
         nombreA = limpio;
@@ -247,23 +182,18 @@ function cambiarNombre(equipo) {
         nombreB = limpio;
     }
 
-
     actualizar();
 }
 
 
-/* ========================================
-   COLOR
-   ======================================== */
+/* COLORES */
 
 function cambiarColor(equipo) {
 
     equipoColorActivo =
         equipo;
 
-
     crearPaleta();
-
 
     document
         .getElementById("modalColor")
@@ -277,43 +207,26 @@ function crearPaleta() {
     const paleta =
         document.getElementById("paleta");
 
-
-    paleta.innerHTML = "";
-
+    paleta.innerHTML =
+        "";
 
     COLORES.forEach(color => {
 
         const boton =
             document.createElement("button");
 
-
         boton.className =
             "color-opcion";
-
 
         boton.style.background =
             color;
 
-
-        boton.setAttribute(
-            "aria-label",
-            "Seleccionar color"
-        );
-
-
-        boton.onclick = () => {
-
-            seleccionarColor(
-                color
-            );
-
-        };
-
+        boton.onclick =
+            () => seleccionarColor(color);
 
         paleta.appendChild(
             boton
         );
-
     });
 }
 
@@ -328,7 +241,6 @@ function seleccionarColor(color) {
         colorB = color;
     }
 
-
     actualizar();
 
     cerrarColores();
@@ -342,42 +254,24 @@ function aplicarColor(equipo) {
             ? colorA
             : colorB;
 
-
     document
-        .getElementById(
-            "nombre" + equipo
-        )
+        .getElementById("nombre" + equipo)
         .style.color =
         color;
 
-
     document
-        .getElementById(
-            "puntos" + equipo
-        )
+        .getElementById("puntos" + equipo)
         .style.color =
         color;
 
+    document
+        .getElementById("sets" + equipo)
+        .style.color =
+        color;
 
     document
-        .getElementById(
-            "numero-set"
-        );
-
-
-    document
-        .getElementById(
-            "color" + equipo
-        )
+        .getElementById("color" + equipo)
         .style.background =
-        color;
-
-
-    document
-        .getElementById(
-            "sets" + equipo
-        )
-        .style.color =
         color;
 }
 
@@ -389,53 +283,39 @@ function cerrarColores() {
         .classList
         .add("oculto");
 
-
     equipoColorActivo =
         null;
 }
 
 
-/* ========================================
-   REINICIAR
-   ======================================== */
+/* REINICIO */
 
 function reiniciarPuntos() {
 
-    const confirmar =
-        confirm(
+    if (
+        !confirm(
             "¿Reiniciar los puntos?"
-        );
-
-
-    if (!confirmar) {
+        )
+    ) {
         return;
     }
 
-
     puntosA = 0;
     puntosB = 0;
-
 
     actualizar();
 }
 
 
-/* ========================================
-   NUEVO PARTIDO
-   ======================================== */
-
 function nuevoPartido() {
 
-    const confirmar =
-        confirm(
+    if (
+        !confirm(
             "¿Iniciar un nuevo partido? Se reiniciarán puntos y sets."
-        );
-
-
-    if (!confirmar) {
+        )
+    ) {
         return;
     }
-
 
     puntosA = 0;
     puntosB = 0;
@@ -443,14 +323,11 @@ function nuevoPartido() {
     setsA = 0;
     setsB = 0;
 
-
     actualizar();
 }
 
 
-/* ========================================
-   CERRAR MODAL TOCANDO EL FONDO
-   ======================================== */
+/* CERRAR SELECTOR */
 
 document
     .getElementById("modalColor")
@@ -464,21 +341,16 @@ document
             ) {
                 cerrarColores();
             }
-
         }
     );
 
 
-/* ========================================
-   INICIAR
-   ======================================== */
+/* INICIAR */
 
 actualizar();
 
 
-/* ========================================
-   SERVICE WORKER
-   ======================================== */
+/* PWA */
 
 if ("serviceWorker" in navigator) {
 
