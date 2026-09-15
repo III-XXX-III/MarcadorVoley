@@ -1,4 +1,4 @@
-const CACHE_NAME = "voley-v4";
+const CACHE_NAME = "voley-v5";
 
 const ARCHIVOS = [
     "./",
