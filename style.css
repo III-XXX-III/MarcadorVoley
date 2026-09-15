@@ -1,6 +1,6 @@
-/* =========================
-   MARCADOR DE VOLEIBOL
-   ========================= */
+/* ========================================
+   MARCADOR VOLEIBOL
+   ======================================== */
 
 * {
     box-sizing: border-box;
@@ -9,129 +9,190 @@
 
 html,
 body {
-    margin: 0;
-    padding: 0;
     width: 100%;
     height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    background: #0a0a0a;
+    background: #080808;
     color: #ffffff;
 
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
 
     overflow: hidden;
+
     user-select: none;
     -webkit-user-select: none;
-}
 
-
-/* MARCADOR PRINCIPAL */
-
-.marcador {
-    width: 100%;
-    height: calc(100vh - 75px);
-
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
-}
-
-
-/* CADA EQUIPO */
-
-.equipo {
-    flex: 1;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    min-width: 0;
-}
-
-
-/* NOMBRE DEL EQUIPO */
-
-.equipo h2 {
-    margin: 0 0 10px 0;
-
-    font-size: clamp(20px, 3vw, 38px);
-    font-weight: 600;
-
-    letter-spacing: 2px;
-}
-
-
-/* PUNTOS */
-
-.puntos {
-    font-size: clamp(130px, 28vw, 320px);
-    font-weight: 700;
-
-    line-height: 0.9;
-
-    font-variant-numeric: tabular-nums;
-
-    margin: 10px 0 30px 0;
-}
-
-
-/* BOTONES */
-
-.botones {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    gap: 18px;
+    overscroll-behavior: none;
 }
 
 button {
+    border: 0;
+    outline: 0;
+
     font-family: inherit;
 
-    border: none;
-    outline: none;
-
-    color: white;
+    color: inherit;
 
     cursor: pointer;
 
     touch-action: manipulation;
 
-    -webkit-user-select: none;
     user-select: none;
+    -webkit-user-select: none;
 }
 
 
-/* BOTÓN SUMAR */
+/* ========================================
+   MARCADOR
+   ======================================== */
 
-.sumar {
-    width: 120px;
-    height: 70px;
+.marcador {
+    width: 100%;
+    height: calc(100dvh - 82px);
 
-    border-radius: 18px;
+    display: flex;
 
-    background: #238636;
+    padding-top: env(safe-area-inset-top);
+}
 
-    font-size: 48px;
+
+/* ========================================
+   EQUIPOS
+   ======================================== */
+
+.equipo {
+    flex: 1;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}
+
+
+/* ========================================
+   NOMBRE
+   ======================================== */
+
+.nombre-equipo {
+    min-width: 220px;
+    min-height: 55px;
+
+    padding: 8px 18px;
+
+    background: transparent;
+
+    font-size: clamp(20px, 3vw, 34px);
+    font-weight: 650;
+
+    letter-spacing: 1.5px;
+
+    border-radius: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nombre-equipo::after {
+    content: "✎";
+
+    margin-left: 8px;
+
+    font-size: 15px;
     font-weight: 400;
 
-    line-height: 1;
+    opacity: 0.45;
+}
+
+.nombre-equipo:active {
+    background: #1b1b1d;
+
+    transform: scale(0.97);
 }
 
 
-/* BOTÓN RESTAR */
+/* ========================================
+   COLOR
+   ======================================== */
 
-.restar {
-    width: 80px;
-    height: 70px;
+.selector-color {
+    width: 32px;
+    height: 10px;
 
-    border-radius: 18px;
+    margin: 2px 0 12px;
 
-    background: #2c2c2e;
+    padding: 0;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 8px
+        rgba(255, 255, 255, 0.25);
+}
+
+
+/* ========================================
+   PUNTOS
+   ======================================== */
+
+.puntos {
+    min-width: 2ch;
+
+    margin: 0 0 22px;
+
+    text-align: center;
+
+    font-size: clamp(145px, 27vw, 310px);
+    font-weight: 750;
+
+    line-height: 0.9;
+
+    font-variant-numeric: tabular-nums;
+
+    letter-spacing: -0.06em;
+}
+
+
+/* ========================================
+   BOTONES + / -
+   ======================================== */
+
+.botones-puntos {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 16px;
+}
+
+.boton-punto {
+    width: 105px;
+    height: 64px;
+
+    padding: 0;
+
+    border-radius: 17px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     font-size: 42px;
     font-weight: 400;
@@ -139,67 +200,260 @@ button {
     line-height: 1;
 }
 
+.sumar {
+    background: #238636;
+}
 
-/* EFECTO AL TOCAR */
+.restar {
+    background: #2c2c2e;
+}
 
-.sumar:active,
-.restar:active {
+.boton-punto:active {
     transform: scale(0.92);
-    opacity: 0.8;
+
+    filter: brightness(0.85);
 }
 
 
-/* LÍNEA ENTRE EQUIPOS */
+/* ========================================
+   SETS
+   ======================================== */
+
+.zona-sets {
+    margin-top: 24px;
+
+    min-height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+}
+
+.texto-set {
+    margin-right: 3px;
+
+    font-size: 13px;
+    font-weight: 650;
+
+    letter-spacing: 1.2px;
+
+    opacity: 0.55;
+}
+
+.numero-set {
+    width: 28px;
+
+    text-align: center;
+
+    font-size: 25px;
+    font-weight: 700;
+
+    font-variant-numeric: tabular-nums;
+}
+
+.boton-set {
+    width: 38px;
+    height: 34px;
+
+    padding: 0;
+
+    border-radius: 10px;
+
+    background: #252527;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 21px;
+    font-weight: 500;
+}
+
+.boton-set:active {
+    transform: scale(0.9);
+}
+
+
+/* ========================================
+   SEPARADOR
+   ======================================== */
 
 .separador {
-    width: 2px;
-    height: 75%;
+    width: 1px;
+    height: 76%;
 
     align-self: center;
 
-    background: #333333;
-
-    border-radius: 2px;
+    background: #343436;
 }
 
 
-/* REINICIAR */
+/* ========================================
+   CONTROLES INFERIORES
+   ======================================== */
 
-.reiniciar {
+.controles {
     position: fixed;
 
-    left: 50%;
-    bottom: 14px;
+    left: 0;
+    bottom: 0;
 
-    transform: translateX(-50%);
+    width: 100%;
 
-    height: 48px;
+    min-height: 82px;
 
-    padding: 0 30px;
+    padding:
+        10px
+        14px
+        calc(10px + env(safe-area-inset-bottom));
 
-    border-radius: 14px;
+    display: flex;
 
-    background: #252525;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    background:
+        linear-gradient(
+            to top,
+            #080808 65%,
+            rgba(8, 8, 8, 0)
+        );
+}
+
+.boton-control {
+    min-width: 145px;
+    height: 44px;
+
+    padding: 0 18px;
+
+    border-radius: 13px;
+
+    background: #252527;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+}
+
+.nuevo-partido {
+    background: #343437;
+}
+
+.boton-control:active {
+    transform: scale(0.95);
+}
+
+
+/* ========================================
+   SELECTOR DE COLOR
+   ======================================== */
+
+.modal-color {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.68);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.oculto {
+    display: none;
+}
+
+.panel-color {
+    width: min(360px, 92vw);
+
+    padding: 24px;
+
+    border-radius: 24px;
+
+    background: #1c1c1e;
+
+    box-shadow:
+        0 20px 60px
+        rgba(0, 0, 0, 0.5);
+}
+
+.titulo-color {
+    margin-bottom: 22px;
+
+    text-align: center;
 
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
 
     letter-spacing: 1px;
 }
 
-.reiniciar:active {
-    opacity: 0.6;
+.paleta {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+}
+
+.color-opcion {
+    width: 52px;
+    height: 52px;
+
+    margin: auto;
+
+    padding: 0;
+
+    border-radius: 50%;
+
+    border: 3px solid transparent;
+}
+
+.color-opcion:active {
+    transform: scale(0.88);
+}
+
+.cerrar-color {
+    width: 100%;
+    height: 45px;
+
+    margin-top: 24px;
+
+    border-radius: 13px;
+
+    background: #303033;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
 }
 
 
-/* =========================
-   IPHONE EN VERTICAL
-   ========================= */
+/* ========================================
+   IPHONE VERTICAL
+   ======================================== */
 
 @media (orientation: portrait) {
 
     .marcador {
-        height: calc(100vh - 70px);
+        height: calc(100dvh - 78px);
 
         flex-direction: column;
     }
@@ -210,93 +464,134 @@ button {
     }
 
     .separador {
-        width: 75%;
-        height: 2px;
+        width: 78%;
+        height: 1px;
     }
 
-    .equipo h2 {
-        font-size: 20px;
+    .nombre-equipo {
+        min-width: 200px;
+        min-height: 42px;
+
+        padding: 5px 14px;
+
+        font-size: 19px;
+    }
+
+    .selector-color {
         margin-bottom: 5px;
     }
 
     .puntos {
-        font-size: clamp(100px, 34vw, 170px);
+        margin-bottom: 10px;
 
-        margin: 0 0 12px 0;
+        font-size: clamp(92px, 29vw, 145px);
     }
 
-    .sumar {
-        width: 115px;
-        height: 55px;
+    .boton-punto {
+        width: 92px;
+        height: 52px;
 
-        font-size: 40px;
+        border-radius: 14px;
 
-        border-radius: 15px;
+        font-size: 35px;
     }
 
-    .restar {
-        width: 70px;
-        height: 55px;
-
-        font-size: 34px;
-
-        border-radius: 15px;
+    .zona-sets {
+        margin-top: 10px;
     }
 
-    .botones {
-        gap: 12px;
+    .boton-set {
+        width: 34px;
+        height: 30px;
+    }
+
+    .numero-set {
+        font-size: 21px;
+    }
+
+    .controles {
+        min-height: 78px;
+    }
+
+    .boton-control {
+        min-width: 135px;
+        height: 42px;
+
+        padding: 0 12px;
+
+        font-size: 10px;
     }
 }
 
 
-/* =========================
-   PANTALLAS PEQUEÑAS
-   ========================= */
+/* ========================================
+   IPHONE HORIZONTAL PEQUEÑO
+   ======================================== */
 
-@media (max-height: 600px) {
+@media (orientation: landscape) and (max-height: 500px) {
 
-    .equipo h2 {
+    .marcador {
+        height: calc(100dvh - 58px);
+    }
+
+    .nombre-equipo {
+        min-height: 36px;
+
+        padding: 3px 14px;
+
         font-size: 18px;
     }
 
+    .selector-color {
+        height: 7px;
+
+        margin-bottom: 5px;
+    }
+
     .puntos {
-        margin-top: 0;
-        margin-bottom: 12px;
+        margin-bottom: 8px;
+
+        font-size: clamp(105px, 20vw, 175px);
     }
 
-    .sumar,
-    .restar {
-        height: 55px;
+    .boton-punto {
+        width: 88px;
+        height: 46px;
+
+        border-radius: 13px;
+
+        font-size: 32px;
     }
-}
 
-.nombre-equipo {
-    cursor: pointer;
-    touch-action: manipulation;
+    .zona-sets {
+        margin-top: 8px;
+    }
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    .boton-set {
+        width: 32px;
+        height: 27px;
 
-    min-width: 260px;
-    min-height: 70px;
+        font-size: 18px;
+    }
 
-    padding: 15px 30px;
+    .numero-set {
+        font-size: 20px;
+    }
 
-    margin: -15px 0 10px 0;
+    .controles {
+        min-height: 58px;
 
-    border-radius: 16px;
-}
+        padding-top: 5px;
+        padding-bottom:
+            calc(
+                5px +
+                env(safe-area-inset-bottom)
+            );
+    }
 
-.nombre-equipo:active {
-    background: #1a1a1a;
-    opacity: 0.7;
-}
+    .boton-control {
+        height: 36px;
 
-.nombre-equipo::after {
-    content: "✎";
-    font-size: 16px;
-    opacity: 0.45;
-    margin-left: 8px;
-    font-weight: normal;
+        font-size: 9px;
+    }
 }
